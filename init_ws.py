@@ -12,7 +12,8 @@ def main():
     parser.add_argument('-w', '--workspace',
                         help='Workspace path',
                         default='~/catkin_ws')
-    parser.add_argument('-k', '--keybindings', default=False)
+    parser.add_argument('-k', '--keybindings', dest="keybindings", action="store_true")
+    parser.set_defaults(keybindings=False)
     args = parser.parse_args()
 
     print("CATKIN TOOLS WORKSPACE CREATOR FOR VSCODE")

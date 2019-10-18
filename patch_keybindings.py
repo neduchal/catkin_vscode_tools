@@ -29,6 +29,9 @@ def patch_keybindings():
         for i, line in enumerate(keybindings):
             if i < closingCharPos:
                 keybindingsFinal.append(line)
+                if i == closingCharPos-1:
+                    if (keybindingsFinal[-1][-1] != ","):
+                        keybindingsFinal[-1] = keybindingsFinal[-1] + ","
         for i, line in enumerate(keybindingsLocal):
             if (i > startingCharPosLocal) and (i < closingCharPosLocal):
                 keybindingsFinal.append(line)
