@@ -5,12 +5,14 @@ import os
 import os.path
 import shutil
 from distutils.dir_util import copy_tree
+from patch_keybindings import *
 
 def main():
     parser = argparse.ArgumentParser(description='Catkin Tools Workspace Creator')
     parser.add_argument('-w', '--workspace',
                         help='Workspace path',
                         default='~/catkin_ws')
+    parser.add_argument('-k', '--keybindings', default=False)
     args = parser.parse_args()
 
     print("CATKIN TOOLS WORKSPACE CREATOR FOR VSCODE")
@@ -30,6 +32,9 @@ def main():
         os.makedirs(vscode_path)
         print(" - copying tasks.json file")
         shutil.copyfile("./settings/tasks.json", os.path.join(vscode_path, "tasks.json"))
+        if args.keybindings:
+            print(" - patching keybindings file")
+            patch_keybindings()
         print(" - changing directory to workspace")
         os.chdir(args.workspace)
         print(" - catkin init")
