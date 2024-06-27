@@ -40,8 +40,8 @@ def main():
         os.chdir(args.workspace)
         print(" - catkin init")
         os.system("catkin init")
-        print(" - running vscode")
-        os.system("code " + args.workspace)
+        #print(" - running vscode")
+        #os.system("code " + args.workspace)
         print("WORKSPACE CREATED")
     else:
         print("Workspace folder already exists")
